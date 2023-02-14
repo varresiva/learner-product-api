@@ -38,8 +38,16 @@ public class ProductController {
 
     // create Product
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return this.productRepository.save(product);
+    public String createProduct(@RequestBody CreateProductRequestBean createProductRequestBean) {
+        createProductRequestBean.getItems().forEach(item -> {
+            Product product = new Product();
+            product.setProductCategory(createProductRequestBean.getTitle());
+            product.setProductPrice(item.getPrice() * 100);
+            product.setProductName(item.getName());
+            product.setProductImageUrl(item.getImageUrl());
+            this.productRepository.save(product);
+        });
+        return "Created";
     }
 
     // update Product

@@ -1,12 +1,36 @@
-server:
-  port: 8232
 spring:
+  application:
+    name: learner-product-api
+---
+spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     password: Sk@ndh15
     url: jdbc:mysql://localhost:3306/product_managment?useSSL=false
     username: root
-  application:
-    name: user-api
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+server:
+  port: 8132
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8181/eureka/
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    password: Sk@ndh15
+    url: jdbc:mysql://localhost:3306/product_managment?useSSL=false
+    username: root
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: learner-product-api
+    name: learner-user-api
 ---
 spring:
   config:
@@ -17,7 +17,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 server:
-  port: 8132
+  port: 8232
 eureka:
   client:
     serviceUrl:
@@ -29,7 +29,7 @@ spring:
       on-profile: dev
   datasource:
     password: Learner@2023
-    url: jdbc:mysql://34.29.125.76:3306,34.68.236.8:3306/learnerCrownClothing?useSSL=FALSE
+    url: jdbc:mysql://35.188.122.252:3306/learnerCrownClothing?useSSL=FALSE
     username: root
   jpa:
     hibernate:
@@ -40,4 +40,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://34.125.14.97:32770/eureka/
+      defaultZone: http://34.29.95.107:8761/eureka/

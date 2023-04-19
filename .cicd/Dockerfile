@@ -11,6 +11,7 @@ RUN mkdir -p /opt/learner/
 COPY ["${JAR_SOURCE}", "/opt/learner/learner-product.jar"]
 COPY ["startup.sh", "/opt/learner/"]
 RUN chmod 777 /opt/learner/
+RUN chmod 777 /opt/learner/*.sh
 WORKDIR /opt/learner
 EXPOSE 8080
 USER root

@@ -1,4 +1,4 @@
-// This jenkins file is for Eureka Deployment 
+// This jenkins file is for Products Deployment 
 // this consists of , build, tests, scans, image build, image push, deployments.
 
 pipeline {
@@ -34,7 +34,7 @@ pipeline {
         )
     }
     environment {
-        APPLICATION_NAME = "learner-eureka"
+        APPLICATION_NAME = "learner-product"
         GIT_CREDS = credentials('learner_siva_git_creds')
         POM_VERSION = readMavenPom().getVersion()
         POM_PACKAGING = readMavenPom().getPackaging()
@@ -141,7 +141,7 @@ pipeline {
                 script {
                 // dockerDeploy(env, portnumber)
                 imageValidation().call()
-                dockerDeploy('dev', '8761').call()
+                dockerDeploy('dev', '7000').call()
                 }
 
             }
@@ -155,7 +155,7 @@ pipeline {
             steps {
                 script {
                     imageValidation().call()
-                    dockerDeploy('tst', '8762').call()
+                    dockerDeploy('tst', '7001').call()
                 }
             }
         }
@@ -168,7 +168,7 @@ pipeline {
             steps {
                 script {
                     imageValidation().call()
-                    dockerDeploy('stage', '8763').call()
+                    dockerDeploy('stage', '7002').call()
                 }
             }
         }
@@ -192,7 +192,7 @@ pipeline {
                 }
                 script {
                     imageValidation().call()
-                    dockerDeploy('prod', '8764').call()
+                    dockerDeploy('prod', '7003').call()
                 }
             }
         }
@@ -221,7 +221,7 @@ def dockerDeploy(envDeploy, port) {
                 } catch (err) {
                     echo: 'Caught the error: $err'
                 }
-                sh "sshpass -p '$PASSWORD' -v ssh -o StrictHostKeyChecking=no $USERNAME@$dev_ip \"docker run --restart always --name ${env.APPLICATION_NAME}-$envDeploy -p $port:8761 -d ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:$GIT_COMMIT\""
+                sh "sshpass -p '$PASSWORD' -v ssh -o StrictHostKeyChecking=no $USERNAME@$dev_ip \"docker run --restart always --name ${env.APPLICATION_NAME}-$envDeploy -e JAVA_OPTS='-Dspring.profiles.active=dev -Dserver.port=8080' -p $port:8080 -d ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:$GIT_COMMIT\""
             }
         }
     }

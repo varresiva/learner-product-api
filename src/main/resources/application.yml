@@ -1,6 +1,6 @@
 spring:
   application:
-    name: learner-user-api
+    name: learner-product-api
 ---
 spring:
   config:

@@ -1,4 +1,4 @@
-package com.learner.LearnerProduct.controller;
+package com.learner.LearnerProduct.controller.products;
 
 import lombok.Getter;
 import lombok.Setter;

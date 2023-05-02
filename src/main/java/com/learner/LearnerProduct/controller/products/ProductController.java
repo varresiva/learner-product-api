@@ -1,6 +1,4 @@
-package com.learner.LearnerProduct.controller;
-
-import java.util.List;
+package com.learner.LearnerProduct.controller.products;
 
 import com.learner.LearnerProduct.entity.Product;
 import com.learner.LearnerProduct.exception.ResourceNotFoundException;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/products")
@@ -25,7 +25,8 @@ public class ProductController {
     private ProductRepository productRepository;
 
     // get all products
-    @GetMapping
+//    @CrossOrigin("*")
+    @GetMapping("get-products")
     public List<Product> getAllProducts() {
         return this.productRepository.findAll();
     }
@@ -37,7 +38,7 @@ public class ProductController {
     }
 
     // create Product
-    @PostMapping
+    @PostMapping("add-product")
     public String createProduct(@RequestBody CreateProductRequestBean createProductRequestBean) {
         createProductRequestBean.getItems().forEach(item -> {
             Product product = new Product();

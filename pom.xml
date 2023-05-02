@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.learner</groupId>
-    <artifactId>learner-product-api</artifactId>
+    <artifactId>learner-product</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>learner-product-api</name>
     <description>git remote add origin https://github.com/Skandh15/learner-product-api.git</description>

@@ -4,12 +4,7 @@ import com.learner.LearnerProduct.controller.productCategory.CategoryRequestBean
 import com.learner.LearnerProduct.entity.Category;
 import com.learner.LearnerProduct.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
@@ -37,7 +32,7 @@ public class CategoryController {
         return getString(categoryRequestBean, this.categoryRepository);
     }
 
-//    @CrossOrigin("*")
+    @CrossOrigin("*")
     @GetMapping("/get-category-details")
     public List<Category> getAllCategories() {
         return this.categoryRepository.findAll();

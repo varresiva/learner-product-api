@@ -1,6 +1,8 @@
 spring:
   application:
     name: learner-product-api
+  profiles:
+    active: dev
 ---
 spring:
   config:
